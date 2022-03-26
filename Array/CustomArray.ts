@@ -22,6 +22,16 @@ export class CustomArray<T> {
     this.count--;
   }
 
+  indexOf(item: T) {
+    for (let i = 0; i < this.count; i++) {
+      if (this.items[i] === item) {
+        return i;
+      }
+    }
+
+    return -1;
+  }
+
   print(): void {
     for (let i = 0; i < this.count; i++) {
       console.log(this.items[i]);
