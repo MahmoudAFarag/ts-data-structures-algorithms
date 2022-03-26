@@ -1,5 +1,5 @@
 // Array data structure
-class CustomArray<T> {
+export class CustomArray<T> {
   private items: T[] = [];
   private count = 0;
 
@@ -10,16 +10,21 @@ class CustomArray<T> {
     this.count++;
   }
 
+  removeAt(index: number): void {
+    if (index < 0 || index >= this.count) {
+      throw new Error('Index out of bound');
+    }
+
+    for (let i = index; i < this.count; i++) {
+      this.items[i] = this.items[i + 1];
+    }
+
+    this.count--;
+  }
+
   print(): void {
     for (let i = 0; i < this.count; i++) {
       console.log(this.items[i]);
     }
   }
 }
-
-const clothes = new CustomArray<string>(3);
-
-clothes.insert('bags');
-clothes.insert('dress');
-
-clothes.print();
